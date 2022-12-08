@@ -4,8 +4,9 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
-import javax.persistence.Entity;
-import javax.persistence.Table;
+
+import javax.persistence.*;
+import java.time.Instant;
 
 
 @Data
@@ -15,4 +16,12 @@ import javax.persistence.Table;
 @Entity
 @Table(name = "lignecommandeclient")
 public class LigneCommandeClient extends AbstractEntity{
+
+    @ManyToOne
+    @JoinColumn(name = "idarticle")
+    private Article article;
+
+    @ManyToOne
+    @JoinColumn(name = "idcommandeclient")
+    private CommandeClient commandeClient;
 }
