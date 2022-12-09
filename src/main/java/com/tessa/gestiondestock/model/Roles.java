@@ -1,14 +1,14 @@
 package com.tessa.gestiondestock.model;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.EqualsAndHashCode;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
-import javax.persistence.Entity;
-import javax.persistence.Table;
+import java.time.Instant;
+import java.util.List;
+
+import javax.persistence.*;
 
 @Data
+@Builder
 @NoArgsConstructor
 @AllArgsConstructor
 @EqualsAndHashCode(callSuper = true)
@@ -16,5 +16,10 @@ import javax.persistence.Table;
 @Table(name = "roles")
 public class Roles extends AbstractEntity{
 
-    private String nom;
+    @Column(name = "rolename")
+    private String roleName;
+
+    @ManyToOne
+    @JoinColumn(name = "idutilisateur")
+    private Utilisateur utilisateur;
 }

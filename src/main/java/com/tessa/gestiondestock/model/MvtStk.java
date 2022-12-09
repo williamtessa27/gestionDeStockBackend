@@ -1,16 +1,14 @@
 package com.tessa.gestiondestock.model;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.EqualsAndHashCode;
-import lombok.NoArgsConstructor;
 
-import javax.persistence.Entity;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-import javax.persistence.Table;
+import lombok.*;
+
+import javax.persistence.*;
+import java.math.BigDecimal;
+import java.time.Instant;
 
 @Data
+@Builder
 @NoArgsConstructor
 @AllArgsConstructor
 @EqualsAndHashCode(callSuper = true)
@@ -18,7 +16,16 @@ import javax.persistence.Table;
 @Table(name = "mvtstk")
 public class MvtStk extends AbstractEntity{
 
+    @Column(name = "dateMvt")
+    private Instant dateMvt;
+
+    @Column(name = "quantite")
+    private BigDecimal quantite;
+
     @ManyToOne
     @JoinColumn(name = "idarticle")
     private Article article;
+
+    @Column(name = "typemvt")
+    private typeMvtStk typeMvt;
 }
