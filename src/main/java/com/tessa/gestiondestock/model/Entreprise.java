@@ -3,7 +3,6 @@ package com.tessa.gestiondestock.model;
 import lombok.*;
 
 import javax.persistence.*;
-import java.security.PrivateKey;
 import java.util.List;
 
 @Data

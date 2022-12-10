@@ -1,17 +1,20 @@
 package com.tessa.gestiondestock.dto;
 
-import com.tessa.gestiondestock.model.Adresse;
 
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import java.util.List;
 
 public class ClientDto {
 
+    private Integer id;
+
     private String nom;
 
     private String prenom;
 
-    private Adresse adresse;
+    private AdresseDto adresse;
 
     private String photo;
 
@@ -19,6 +22,7 @@ public class ClientDto {
 
     private String mail;
 
+    @JsonIgnore
     private List<CommandeClientDto> commandeClients;
 
 }

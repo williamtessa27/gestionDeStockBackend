@@ -8,6 +8,7 @@ import java.math.BigDecimal;
 @Data
 public class ArticleDto {
 
+    private Integer id;
 
     private String codeArticle;
 

@@ -11,6 +11,8 @@ import java.util.List;
 @Builder
 public class CommandeClientDto {
 
+    private Integer id;
+
     private String code;
 
     private Instant dateCommande;

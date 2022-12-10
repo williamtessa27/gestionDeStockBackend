@@ -2,8 +2,6 @@ package com.tessa.gestiondestock.model;
 
 import lombok.*;
 
-import java.time.Instant;
-import java.util.List;
 
 import javax.persistence.*;
 

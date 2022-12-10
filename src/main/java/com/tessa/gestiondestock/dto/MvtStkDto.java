@@ -1,6 +1,5 @@
 package com.tessa.gestiondestock.dto;
 
-import com.tessa.gestiondestock.model.Article;
 import com.tessa.gestiondestock.model.typeMvtStk;
 import lombok.Builder;
 import lombok.Data;
@@ -11,6 +10,8 @@ import java.time.Instant;
 @Data
 @Builder
 public class MvtStkDto {
+
+    private Integer id;
 
     private Instant dateMvt;
 
