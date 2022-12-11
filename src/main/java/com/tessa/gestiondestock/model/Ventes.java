@@ -15,6 +15,9 @@ import java.time.Instant;
 @Table(name = "ventes")
 public class Ventes extends AbstractEntity{
 
+    @Column(name = "idEntreprise")
+    private Integer idEntreprise;
+
     @Column(name = "code")
     private String code;
 

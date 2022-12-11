@@ -11,6 +11,8 @@ import java.util.List;
 @Builder
 public class CategoryDto {
 
+    private Integer id;
+
     private String code;
 
     private String designation;
@@ -18,26 +20,28 @@ public class CategoryDto {
     @JsonIgnore
     private List<ArticleDto> articles;
 
-    public CategoryDto fromEntity(Category category){
+    public static CategoryDto fromEntity(Category category){
         if (category == null){
             return null;
             //TODO throw on exception
         }
 
     return CategoryDto.builder()
+            .id(category.getId())
             .code(category.getCode())
             .designation(category.getDesignation())
             .build();
     }
 
 
-    public Category toEntity(CategoryDto categoryDto){
+    public static Category toEntity(CategoryDto categoryDto){
         if (categoryDto == null){
             return null;
             //TODO throw on exception
         }
 
         Category category = new Category();
+         category.setId(categoryDto.getId());
          category.setCode(categoryDto.getCode());
          category.setDesignation(categoryDto.getDesignation());
 

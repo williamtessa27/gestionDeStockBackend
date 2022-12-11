@@ -16,6 +16,9 @@ public class Fournisseur extends AbstractEntity{
     @Column(name = "nom")
     private String nom;
 
+    @Column(name = "identreprise", insertable = false, updatable = false)
+    private Integer idEntreprise;
+
     @Column(name = "prenom")
     private String prenom;
 

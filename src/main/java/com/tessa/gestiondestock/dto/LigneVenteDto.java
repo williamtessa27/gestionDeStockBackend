@@ -17,7 +17,7 @@ public class LigneVenteDto {
 
     private BigDecimal prixUnitaire;
 
-    public LigneVenteDto fromEntity(LigneVente ligneVente){
+    public static LigneVenteDto fromEntity(LigneVente ligneVente){
         if (ligneVente == null){
             return null;
             //TODO throw on exception
@@ -30,7 +30,7 @@ public class LigneVenteDto {
     }
 
 
-    public LigneVente toEntity(LigneVenteDto ligneVenteDto){
+    public static LigneVente toEntity(LigneVenteDto ligneVenteDto){
         if (ligneVenteDto == null){
             return null;
             //TODO throw on exception

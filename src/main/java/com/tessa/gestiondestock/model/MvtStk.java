@@ -15,6 +15,9 @@ import java.time.Instant;
 @Table(name = "mvtstk")
 public class MvtStk extends AbstractEntity{
 
+    @Column(name = "identreprise")
+    private Integer idEntreprise;
+
     @Column(name = "dateMvt")
     private Instant dateMvt;
 

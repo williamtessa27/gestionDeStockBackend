@@ -17,7 +17,7 @@ public class VentesDto {
 
     private String commentaire;
 
-    public VentesDto fromEntity(Ventes ventes){
+    public static VentesDto fromEntity(Ventes ventes){
         if (ventes == null){
             return null;
             //TODO throw on exception
@@ -31,7 +31,7 @@ public class VentesDto {
     }
 
 
-    public Ventes toEntity(VentesDto ventesDto){
+    public static Ventes toEntity(VentesDto ventesDto){
         if (ventesDto == null){
             return null;
             //TODO throw on exception

@@ -19,6 +19,9 @@ public class Category extends AbstractEntity{
     @Column(name = "code")
     private String code;
 
+    @Column(name = "identreprise")
+    private Integer idEntreprise;
+
     @Column(name = "designation")
     private String designation;
 

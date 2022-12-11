@@ -21,7 +21,7 @@ public class MvtStkDto {
 
     private typeMvtStk typeMvt;
 
-    public MvtStkDto fromEntity(MvtStk mvtStk){
+    public static MvtStkDto fromEntity(MvtStk mvtStk){
         if (mvtStk == null){
             return null;
             //TODO throw on exception
@@ -34,7 +34,7 @@ public class MvtStkDto {
     }
 
 
-    public MvtStk toEntity(MvtStkDto mvtStkDto){
+    public static MvtStk toEntity(MvtStkDto mvtStkDto){
         if (mvtStkDto == null){
             return null;
             //TODO throw on exception

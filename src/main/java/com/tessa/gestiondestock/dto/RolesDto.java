@@ -1,7 +1,6 @@
 package com.tessa.gestiondestock.dto;
 
 
-import com.tessa.gestiondestock.model.Category;
 import com.tessa.gestiondestock.model.Roles;
 import lombok.Builder;
 import lombok.Data;
@@ -14,7 +13,7 @@ public class RolesDto {
 
     private UtilisateurDto utilisateur;
 
-    public RolesDto fromEntity(Roles roles){
+    public static RolesDto fromEntity(Roles roles){
         if (roles == null){
             return null;
             //TODO throw on exception
@@ -26,7 +25,7 @@ public class RolesDto {
     }
 
 
-    public Roles toEntity(RolesDto rolesDto){
+    public static Roles toEntity(RolesDto rolesDto){
         if (rolesDto == null){
             return null;
             //TODO throw on exception

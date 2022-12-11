@@ -2,10 +2,7 @@ package com.tessa.gestiondestock.model;
 
 import lombok.*;
 
-import javax.persistence.Entity;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 
 @Data
@@ -15,6 +12,9 @@ import javax.persistence.Table;
 @Entity
 @Table(name = "lignecommandefournisseur")
 public class LigneCommandeFournisseur extends AbstractEntity{
+
+    @Column(name = "identreprise")
+    private Integer idEntreprise;
 
     @ManyToOne
     @JoinColumn(name = "idarticle")

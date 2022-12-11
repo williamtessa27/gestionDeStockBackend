@@ -16,6 +16,9 @@ public class Adresse {
     @Column(name = "adresse1")
     private String adresse1;
 
+    @Column(name = "identreprise")
+    private Integer idEntreprise;
+
     @Column(name = "adresse2")
     private String adresse2;
 

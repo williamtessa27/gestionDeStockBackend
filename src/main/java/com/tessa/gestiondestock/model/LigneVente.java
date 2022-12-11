@@ -13,6 +13,9 @@ import java.math.BigDecimal;
 @Table(name = "lignevente")
 public class LigneVente extends AbstractEntity{
 
+    @Column(name = "identreprise")
+    private Integer idEntreprise;
+
     @ManyToOne
     @JoinColumn(name = "idvente")
     private Ventes vente;
