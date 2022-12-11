@@ -11,8 +11,6 @@ import java.util.List;
 @Builder
 public class CategoryDto {
 
-    private Integer id;
-
     private String code;
 
     private String designation;
@@ -27,9 +25,22 @@ public class CategoryDto {
         }
 
     return CategoryDto.builder()
-            .id(category.getId())
             .code(category.getCode())
             .designation(category.getDesignation())
             .build();
+    }
+
+
+    public Category toEntity(CategoryDto categoryDto){
+        if (categoryDto == null){
+            return null;
+            //TODO throw on exception
+        }
+
+        Category category = new Category();
+         category.setCode(categoryDto.getCode());
+         category.setDesignation(categoryDto.getDesignation());
+
+         return category;
     }
 }

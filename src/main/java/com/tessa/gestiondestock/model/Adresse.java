@@ -7,7 +7,6 @@ import javax.persistence.Embeddable;
 
 
 @Data
-@Builder
 @NoArgsConstructor
 @AllArgsConstructor
 @EqualsAndHashCode

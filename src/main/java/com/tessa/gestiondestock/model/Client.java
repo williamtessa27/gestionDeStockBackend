@@ -6,7 +6,6 @@ import javax.persistence.*;
 import java.util.List;
 
 @Data
-@Builder
 @NoArgsConstructor
 @AllArgsConstructor
 @EqualsAndHashCode(callSuper = true)
@@ -26,12 +25,14 @@ public class Client extends AbstractEntity{
     @Column(name = "photo")
     private String photo;
 
-    @Column(name = "numtel")
-    private String numTel;
-
     @Column(name = "mail")
     private String mail;
 
+    @Column(name = "numtel")
+    private String numtel;
+
     @OneToMany(mappedBy = "client")
     private List<CommandeClient> commandeClients;
+
+
 }

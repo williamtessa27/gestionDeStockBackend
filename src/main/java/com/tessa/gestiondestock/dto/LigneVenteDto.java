@@ -1,6 +1,7 @@
 package com.tessa.gestiondestock.dto;
 
 
+import com.tessa.gestiondestock.model.LigneVente;
 import lombok.Builder;
 import lombok.Data;
 
@@ -10,12 +11,36 @@ import java.math.BigDecimal;
 @Builder
 public class LigneVenteDto {
 
-    private Integer id;
-
     private VentesDto vente;
 
     private BigDecimal quantite;
 
     private BigDecimal prixUnitaire;
+
+    public LigneVenteDto fromEntity(LigneVente ligneVente){
+        if (ligneVente == null){
+            return null;
+            //TODO throw on exception
+        }
+
+        return LigneVenteDto.builder()
+                .quantite(ligneVente.getQuantite())
+                .prixUnitaire(ligneVente.getPrixUnitaire())
+                .build();
+    }
+
+
+    public LigneVente toEntity(LigneVenteDto ligneVenteDto){
+        if (ligneVenteDto == null){
+            return null;
+            //TODO throw on exception
+        }
+
+        LigneVente ligneVente = new LigneVente();
+        ligneVente.setQuantite(ligneVenteDto.getQuantite());
+        ligneVente.setPrixUnitaire(ligneVenteDto.getPrixUnitaire());
+
+        return ligneVente;
+    }
 
 }

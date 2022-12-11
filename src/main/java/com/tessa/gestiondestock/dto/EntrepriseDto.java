@@ -1,20 +1,18 @@
 package com.tessa.gestiondestock.dto;
 
-import com.tessa.gestiondestock.model.Adresse;
-import com.tessa.gestiondestock.model.Utilisateur;
+
+import com.tessa.gestiondestock.model.Category;
+import com.tessa.gestiondestock.model.Entreprise;
+
 import lombok.Builder;
 import lombok.Data;
 
-import javax.persistence.Column;
-import javax.persistence.Embedded;
-import javax.persistence.OneToMany;
+
 import java.util.List;
 
 @Data
 @Builder
 public class EntrepriseDto {
-
-    private Integer id;
 
     private String nom;
 
@@ -33,4 +31,41 @@ public class EntrepriseDto {
     private String siteWeb;
 
     private List<UtilisateurDto> utilisateurs;
+
+    public EntrepriseDto fromEntity(Entreprise entreprise){
+        if (entreprise == null){
+            return null;
+            //TODO throw on exception
+        }
+
+        return EntrepriseDto.builder()
+                .nom(entreprise.getNom())
+                .description(entreprise.getDescription())
+                .codeFiscal(entreprise.getCodeFiscal())
+                .photo(entreprise.getPhoto())
+                .mail(entreprise.getMail())
+                .numTel(entreprise.getNumTel())
+                .siteWeb(entreprise.getSiteWeb())
+                .build();
+    }
+
+
+    public Entreprise toEntity(EntrepriseDto entrepriseDto){
+        if (entrepriseDto == null){
+            return null;
+            //TODO throw on exception
+        }
+
+        Entreprise entreprise = new Entreprise();
+        entreprise.setNom(entrepriseDto.getNom());
+        entreprise.setDescription(entrepriseDto.getDescription());
+        entreprise.setCodeFiscal(entrepriseDto.getCodeFiscal());
+        entreprise.setPhoto(entrepriseDto.getPhoto());
+        entreprise.setMail(entrepriseDto.getMail());
+        entreprise.setNumTel(entrepriseDto.getNumTel());
+        entreprise.setSiteWeb(entrepriseDto.getSiteWeb());
+
+        return entreprise;
+    }
+
 }

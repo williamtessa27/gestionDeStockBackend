@@ -13,7 +13,7 @@ import java.time.Instant;
 
 
 @Data
-@RequiredArgsConstructor
+@NoArgsConstructor
 @MappedSuperclass
 @EntityListeners(AuditingEntityListener.class)
 public class AbstractEntity implements Serializable {
