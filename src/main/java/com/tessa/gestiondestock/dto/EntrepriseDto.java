@@ -14,6 +14,8 @@ import java.util.List;
 @Builder
 public class EntrepriseDto {
 
+    private Integer id;
+
     private String nom;
 
     private String description;

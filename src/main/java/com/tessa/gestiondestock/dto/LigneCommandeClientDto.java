@@ -11,6 +11,8 @@ import java.math.BigDecimal;
 @Builder
 public class LigneCommandeClientDto {
 
+    private Integer id;
+
     private ArticleDto article;
 
     private CommandeClientDto commandeClient;
