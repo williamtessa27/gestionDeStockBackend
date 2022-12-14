@@ -13,6 +13,8 @@ public class CategoryDto {
 
     private Integer id;
 
+    private Integer idEntreprise;
+
     private String code;
 
     private String designation;
@@ -28,6 +30,7 @@ public class CategoryDto {
 
     return CategoryDto.builder()
             .id(category.getId())
+            .idEntreprise(category.getIdEntreprise())
             .code(category.getCode())
             .designation(category.getDesignation())
             .build();
@@ -42,6 +45,7 @@ public class CategoryDto {
 
         Category category = new Category();
          category.setId(categoryDto.getId());
+         category.setIdEntreprise(categoryDto.getIdEntreprise());
          category.setCode(categoryDto.getCode());
          category.setDesignation(categoryDto.getDesignation());
 

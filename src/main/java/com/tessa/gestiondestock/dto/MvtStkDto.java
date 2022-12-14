@@ -1,6 +1,7 @@
 package com.tessa.gestiondestock.dto;
 
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.tessa.gestiondestock.model.MvtStk;
 import com.tessa.gestiondestock.model.typeMvtStk;
 import lombok.Builder;
@@ -15,6 +16,8 @@ public class MvtStkDto {
 
     private Integer id;
 
+    private Integer idEntreprise;
+
     private Instant dateMvt;
 
     private BigDecimal quantite;
@@ -23,6 +26,7 @@ public class MvtStkDto {
 
     private typeMvtStk typeMvt;
 
+    @JsonIgnore
     public static MvtStkDto fromEntity(MvtStk mvtStk){
         if (mvtStk == null){
             return null;
@@ -30,8 +34,11 @@ public class MvtStkDto {
         }
 
         return MvtStkDto.builder()
+                .id(mvtStk.getId())
+                .idEntreprise(mvtStk.getIdEntreprise())
                 .dateMvt(mvtStk.getDateMvt())
                 .quantite(mvtStk.getQuantite())
+                .article(ArticleDto.fromEntity(mvtStk.getArticle()))
                 .build();
     }
 
@@ -43,8 +50,11 @@ public class MvtStkDto {
         }
 
         MvtStk mvtStk = new MvtStk();
+        mvtStk.setId(mvtStkDto.getId());
+        mvtStk.setIdEntreprise(mvtStkDto.getIdEntreprise());
         mvtStk.setDateMvt(mvtStkDto.getDateMvt());
         mvtStk.setQuantite(mvtStkDto.getQuantite());
+        mvtStk.setArticle(ArticleDto.toEntity(mvtStkDto.getArticle()));
 
         return mvtStk;
     }

@@ -1,6 +1,7 @@
 package com.tessa.gestiondestock.dto;
 
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.tessa.gestiondestock.model.Roles;
 import lombok.Builder;
 import lombok.Data;
@@ -11,8 +12,11 @@ public class RolesDto {
 
     private Integer id;
 
+    private Integer idEntreprise;
+
     private String roleName;
 
+    @JsonIgnore
     private UtilisateurDto utilisateur;
 
     public static RolesDto fromEntity(Roles roles){
@@ -22,6 +26,8 @@ public class RolesDto {
         }
 
         return RolesDto.builder()
+                .id(roles.getId())
+                .idEntreprise(roles.getIdEntreprise())
                 .roleName(roles.getRoleName())
                 .build();
     }
@@ -34,6 +40,8 @@ public class RolesDto {
         }
 
         Roles roles = new Roles();
+        roles.setId(rolesDto.getId());
+        roles.setIdEntreprise(rolesDto.getIdEntreprise());
         roles.setRoleName(rolesDto.getRoleName());
 
         return roles;

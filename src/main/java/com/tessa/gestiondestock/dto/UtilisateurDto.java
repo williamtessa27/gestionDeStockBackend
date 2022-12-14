@@ -1,6 +1,7 @@
 package com.tessa.gestiondestock.dto;
 
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.tessa.gestiondestock.model.Category;
 import com.tessa.gestiondestock.model.Utilisateur;
 import lombok.Builder;
@@ -30,8 +31,10 @@ public class UtilisateurDto {
 
     private String photo;
 
+    @JsonIgnore
     private EntrepriseDto entreprise;
 
+    @JsonIgnore
     private List<RolesDto> roles;
 
     public static UtilisateurDto fromEntity(Utilisateur utilisateur){
@@ -41,6 +44,7 @@ public class UtilisateurDto {
         }
 
         return UtilisateurDto.builder()
+                .id(utilisateur.getId())
                 .nom(utilisateur.getNom())
                 .prenom(utilisateur.getPrenom())
                 .mail(utilisateur.getMail())
@@ -57,6 +61,7 @@ public class UtilisateurDto {
         }
 
         Utilisateur utilisateur = new Utilisateur();
+        utilisateur.setId(utilisateurDto.getId());
         utilisateur.setNom(utilisateurDto.getNom());
         utilisateur.setPrenom(utilisateurDto.getPrenom());
         utilisateur.setMail(utilisateurDto.getMail());

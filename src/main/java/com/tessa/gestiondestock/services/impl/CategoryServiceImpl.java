@@ -70,7 +70,7 @@ public class CategoryServiceImpl implements CategoryService {
 
         return Optional.of(CategoryDto.fromEntity(category.get())).orElseThrow(() ->
                 new EntityNotFoundException(
-                        "Aucun avec le CODE = " + code + " n'a ete trouve dans la base de donnee",
+                        "Aucune avec le CODE = " + code + " n'a ete trouve dans la base de donnee",
                         ErrorCodes.CATEGORY_NOT_FOUND)
         );
     }

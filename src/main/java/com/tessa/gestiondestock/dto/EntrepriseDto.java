@@ -1,6 +1,7 @@
 package com.tessa.gestiondestock.dto;
 
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.tessa.gestiondestock.model.Category;
 import com.tessa.gestiondestock.model.Entreprise;
 
@@ -32,6 +33,7 @@ public class EntrepriseDto {
 
     private String siteWeb;
 
+    @JsonIgnore
     private List<UtilisateurDto> utilisateurs;
 
     public static EntrepriseDto fromEntity(Entreprise entreprise){
@@ -41,6 +43,7 @@ public class EntrepriseDto {
         }
 
         return EntrepriseDto.builder()
+                .id(entreprise.getId())
                 .nom(entreprise.getNom())
                 .description(entreprise.getDescription())
                 .codeFiscal(entreprise.getCodeFiscal())
@@ -59,6 +62,7 @@ public class EntrepriseDto {
         }
 
         Entreprise entreprise = new Entreprise();
+        entreprise.setId(entrepriseDto.getId());
         entreprise.setNom(entrepriseDto.getNom());
         entreprise.setDescription(entrepriseDto.getDescription());
         entreprise.setCodeFiscal(entrepriseDto.getCodeFiscal());
