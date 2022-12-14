@@ -1,6 +1,7 @@
 package com.tessa.gestiondestock.dto;
 
 
+import com.tessa.gestiondestock.model.Article;
 import com.tessa.gestiondestock.model.LigneVente;
 import lombok.Builder;
 import lombok.Data;
@@ -20,6 +21,8 @@ public class LigneVenteDto {
     private BigDecimal quantite;
 
     private BigDecimal prixUnitaire;
+
+    private Article article;
 
     public static LigneVenteDto fromEntity(LigneVente ligneVente){
         if (ligneVente == null){

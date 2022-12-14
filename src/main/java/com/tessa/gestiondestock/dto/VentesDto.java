@@ -7,20 +7,21 @@ import lombok.Builder;
 import lombok.Data;
 
 import java.time.Instant;
+import java.util.List;
 
 @Data
 @Builder
 public class VentesDto {
 
-    private Integer id;
-
-    private Integer idEntreprise;
-
     private String code;
+
+    private Integer id;
 
     private Instant dateVente;
 
     private String commentaire;
+
+    private List<LigneVenteDto> ligneVentes;
 
     @JsonIgnore
     public static VentesDto fromEntity(Ventes ventes){
@@ -31,7 +32,6 @@ public class VentesDto {
 
         return VentesDto.builder()
                 .id(ventes.getId())
-                .idEntreprise(ventes.getIdEntreprise())
                 .code(ventes.getCode())
                 .dateVente(ventes.getDateVente())
                 .commentaire(ventes.getCommentaire())
@@ -47,7 +47,6 @@ public class VentesDto {
 
         Ventes ventes = new Ventes();
         ventes.setId(ventesDto.getId());
-        ventes.setIdEntreprise(ventesDto.getIdEntreprise());
         ventes.setCode(ventesDto.getCode());
         ventes.setDateVente(ventesDto.getDateVente());
         ventes.setCommentaire(ventesDto.getCommentaire());
