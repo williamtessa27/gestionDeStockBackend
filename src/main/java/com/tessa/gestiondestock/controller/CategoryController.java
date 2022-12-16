@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
 
+
 @RestController
 public class CategoryController implements CategoryApi {
 
@@ -24,13 +25,13 @@ public class CategoryController implements CategoryApi {
     }
 
     @Override
-    public CategoryDto findById(Integer id) {
-        return categoryService.findById(id);
+    public CategoryDto findById(Integer idCategory) {
+        return categoryService.findById(idCategory);
     }
 
     @Override
-    public CategoryDto findByCode(String code) {
-        return categoryService.findByCode(code);
+    public CategoryDto findByCode(String codeCategory) {
+        return categoryService.findByCode(codeCategory);
     }
 
     @Override

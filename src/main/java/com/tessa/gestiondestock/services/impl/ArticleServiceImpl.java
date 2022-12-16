@@ -59,17 +59,17 @@ public class ArticleServiceImpl implements ArticleService {
     }
 
     @Override
-    public ArticleDto findByCodeArticle(String codeArticle) {
-        if(!StringUtils.hasLength(codeArticle)){
+    public ArticleDto findByCodeArticle(String code) {
+        if(!StringUtils.hasLength(code)){
             log.error("Article code is null");
             return null;
         }
 
-        Optional<Article> article = articleRepository.findArticleByCodeArticle(codeArticle);
+        Optional<Article> article = articleRepository.findArticleByCodeArticle(code);
 
         return Optional.of(ArticleDto.fromEntity(article.get())).orElseThrow(() ->
                 new EntityNotFoundException(
-                        "Aucun avec le CODE = " + codeArticle + " n'a ete trouve dans la base de donnee",
+                        "Aucun avec le CODE = " + code + " n'a ete trouve dans la base de donnee",
                         ErrorCodes.ARTICLE_NOT_FOUND)
         );
     }

@@ -46,6 +46,11 @@
 			<optional>true</optional>
 		</dependency>
 		<dependency>
+			<groupId>io.springfox</groupId>
+			<artifactId>springfox-swagger-ui</artifactId>
+			<version>2.9.2</version>
+		</dependency>
+		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-test</artifactId>
 			<scope>test</scope>
@@ -54,6 +59,16 @@
 			<groupId>org.springframework.security</groupId>
 			<artifactId>spring-security-test</artifactId>
 			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>com.tessa</groupId>
+			<artifactId>gestiondestock</artifactId>
+			<version>0.0.1-SNAPSHOT</version>
+		</dependency>
+		<dependency>
+			<groupId>io.springfox</groupId>
+			<artifactId>springfox-swagger2</artifactId>
+			<version>2.9.2</version>
 		</dependency>
 	</dependencies>
 
@@ -100,8 +115,45 @@
 					<artifactId>maven-project-info-reports-plugin</artifactId>
 					<version>3.0.0</version>
 				</plugin>
+				<plugin>
+					<groupId>com.git.kongchen</groupId>
+					<artifactId>swagger-maven-plugin</artifactId>
+					<version>3.1.8</version>
+					<configuration>
+						<apiSources>
+							<apiSources>
+								<springmvc>true</springmvc>
+								<locations>
+									<location>com.tessa.gestiondestock.controller</location>
+								</locations>
+								<basePath>http://localhost:8080</basePath>
+								<info>
+									<title>Swagger Api documentation for gestion de stock application </title>
+									<version>${project.version}</version>
+									<description>Swagger Api documentation for gestion de stock application</description>
+									<contact>
+										<email>williamtessa270794@gmail.com</email>
+										<name>Demenou Tessa William</name>
+									</contact>
+								</info>
+								<outputPath>${project.build.directory}</outputPath>
+								<outputFormats>json</outputFormats>
+								<swaggerApiReader>com.github.kongchen.swagger.docgen.reader.SpringMvcApiReader</swaggerApiReader>
+								<swaggerDirectory>${project.build.directory}</swaggerDirectory>
+							</apiSources>
+						</apiSources>
+					</configuration>
+					<executions>
+						<execution>
+							<phase>install</phase>
+							<goals>
+								<goal>generate</goal>
+							</goals>
+						</execution>
+					</executions>
+				</plugin>
 			</plugins>
-		</pluginManagement>
+			</pluginManagement>
 	</build>
 
 </project>

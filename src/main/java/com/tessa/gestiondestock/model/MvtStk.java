@@ -18,7 +18,7 @@ public class MvtStk extends AbstractEntity{
     @Column(name = "identreprise")
     private Integer idEntreprise;
 
-    @Column(name = "dateMvt")
+    @Column(name = "datemvt")
     private Instant dateMvt;
 
     @Column(name = "quantite")

@@ -35,6 +35,6 @@ public class ClientController implements ClientApi {
 
     @Override
     public void delete(Integer id) {
-        clientService.delete(id);
+         clientService.delete(id);
     }
 }
