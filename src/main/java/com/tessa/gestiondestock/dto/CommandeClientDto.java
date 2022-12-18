@@ -1,6 +1,7 @@
 package com.tessa.gestiondestock.dto;
 
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.tessa.gestiondestock.model.CommandeClient;
 import lombok.Builder;
 import lombok.Data;
@@ -23,6 +24,7 @@ public class CommandeClientDto {
 
     private ClientDto client;
 
+    @JsonIgnore
     private List<LigneCommandeClientDto> ligneCommandeClients;
 
     public static CommandeClientDto fromEntity(CommandeClient commandeClient){

@@ -17,13 +17,15 @@ public class VentesDto {
 
     private Integer id;
 
+    private Integer idEntreprise;
+
     private Instant dateVente;
 
     private String commentaire;
 
+    @JsonIgnore
     private List<LigneVenteDto> ligneVentes;
 
-    @JsonIgnore
     public static VentesDto fromEntity(Ventes ventes){
         if (ventes == null){
             return null;
@@ -32,6 +34,7 @@ public class VentesDto {
 
         return VentesDto.builder()
                 .id(ventes.getId())
+                .idEntreprise(ventes.getId())
                 .code(ventes.getCode())
                 .dateVente(ventes.getDateVente())
                 .commentaire(ventes.getCommentaire())
@@ -46,6 +49,7 @@ public class VentesDto {
         }
 
         Ventes ventes = new Ventes();
+        ventes.setId(ventesDto.getId());
         ventes.setId(ventesDto.getId());
         ventes.setCode(ventesDto.getCode());
         ventes.setDateVente(ventesDto.getDateVente());

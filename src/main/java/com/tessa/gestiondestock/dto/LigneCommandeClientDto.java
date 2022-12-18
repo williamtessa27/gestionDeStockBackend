@@ -1,6 +1,6 @@
 package com.tessa.gestiondestock.dto;
 
-import com.tessa.gestiondestock.model.Category;
+
 import com.tessa.gestiondestock.model.LigneCommandeClient;
 import lombok.Builder;
 import lombok.Data;

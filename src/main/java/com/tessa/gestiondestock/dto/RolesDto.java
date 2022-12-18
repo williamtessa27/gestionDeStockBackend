@@ -1,7 +1,6 @@
 package com.tessa.gestiondestock.dto;
 
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.tessa.gestiondestock.model.Roles;
 import lombok.Builder;
 import lombok.Data;
@@ -16,7 +15,6 @@ public class RolesDto {
 
     private String roleName;
 
-    @JsonIgnore
     private UtilisateurDto utilisateur;
 
     public static RolesDto fromEntity(Roles roles){

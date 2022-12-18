@@ -27,7 +27,7 @@ public class UtilisateurValidator {
             errors.add("Veuillez renseigner le prenom d'utilisateur");
         }
 
-        if (!StringUtils.hasLength(utilisateurDto.getMail())){
+        if (!StringUtils.hasLength(utilisateurDto.getEmail())){
             errors.add("Veuillez renseigner le mail de l'utilisateur");
         }
 

@@ -1,14 +1,15 @@
 package com.tessa.gestiondestock.model;
 
 import lombok.*;
+import org.hibernate.Hibernate;
 
 import javax.persistence.*;
 import java.util.List;
+import java.util.Objects;
 
-@Data
-@NoArgsConstructor
-@AllArgsConstructor
-@EqualsAndHashCode(callSuper = true)
+@Getter
+@Setter
+@ToString
 @Entity
 @Table(name = "entreprise")
 public class Entreprise extends AbstractEntity{
@@ -38,6 +39,19 @@ public class Entreprise extends AbstractEntity{
     private String siteWeb;
 
     @OneToMany(mappedBy = "entreprise")
+    @ToString.Exclude
     private List<Utilisateur> utilisateurs;
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || Hibernate.getClass(this) != Hibernate.getClass(o)) return false;
+        Entreprise that = (Entreprise) o;
+        return getId() != null && Objects.equals(getId(), that.getId());
+    }
+
+    @Override
+    public int hashCode() {
+        return getClass().hashCode();
+    }
 }

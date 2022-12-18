@@ -1,7 +1,6 @@
 package com.tessa.gestiondestock.dto;
 
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.tessa.gestiondestock.model.MvtStk;
 import com.tessa.gestiondestock.model.typeMvtStk;
 import lombok.Builder;
@@ -26,7 +25,6 @@ public class MvtStkDto {
 
     private typeMvtStk typeMvt;
 
-    @JsonIgnore
     public static MvtStkDto fromEntity(MvtStk mvtStk){
         if (mvtStk == null){
             return null;

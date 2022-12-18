@@ -1,6 +1,7 @@
 package com.tessa.gestiondestock.dto;
 
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.tessa.gestiondestock.model.CommandeFournisseur;
 import lombok.Builder;
 import lombok.Data;
@@ -22,6 +23,7 @@ public class CommandeFournisseurDto {
 
     private FournisseurDto fournisseur;
 
+    @JsonIgnore
     private List<LigneCommandeFournisseurDto> ligneCommandeFournisseurs;
 
     public static CommandeFournisseurDto fromEntity(CommandeFournisseur commandeFournisseur){

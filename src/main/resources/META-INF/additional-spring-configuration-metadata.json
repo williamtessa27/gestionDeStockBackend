@@ -4,5 +4,15 @@
       "name": "flickr.apiKey",
       "type": "java.lang.String",
       "description": "Description for flickr.apiKey."
-  }
-] }
+    },
+    {
+      "name": "flickr.apiSecret",
+      "type": "java.lang.String",
+      "description": "Description for flickr.apiSecret."
+    },
+    {
+      "name": "spring.jpa.interceptor",
+      "type": "java.lang.String",
+      "description": "Description for spring.jpa.interceptor."
+    }
+  ] }
