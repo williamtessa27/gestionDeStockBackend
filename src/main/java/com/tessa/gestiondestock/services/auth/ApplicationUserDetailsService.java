@@ -26,12 +26,12 @@ public class ApplicationUserDetailsService implements UserDetailsService {
 
     @Override
     public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
-        Utilisateur utilisateur = repository.findByEmail(email).orElseThrow(() ->
-                new EntityNotFoundException("Aucun utilisateur avec le mail fourni", ErrorCodes.UTILISATEUR_NOT_FOUND)
-        );
+       // Utilisateur utilisateur = repository.findUtilisateurByEmail(email).orElseThrow(() ->
+         //       new EntityNotFoundException("Aucun utilisateur avec le mail fourni", ErrorCodes.UTILISATEUR_NOT_FOUND)
+       // );
 
 
 
-        return new User(utilisateur.getEmail(), utilisateur.getMotDePasse(), Collections.emptyList());
+        return new User("tessa", "tessa", Collections.emptyList());
     }
 }

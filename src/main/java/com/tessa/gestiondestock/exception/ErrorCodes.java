@@ -10,6 +10,7 @@ public enum ErrorCodes {
     CLIENT_NOT_VALID(3001),
     COMMANDE_CLIENT_NOT_FOUND(4000),
     COMMANDE_CLIENT_NOT_VALID(4001),
+    COMMANDE_CLIENT_NON_MODIFIABLE(4002),
     COMMANDE_FOURNISSEUR_NOT_FOUND(5000),
     COMMANDE_FOURNISSEUR_NOT_VALID(5001),
     ENTREPRISE_NOT_FOUND(6000),
@@ -30,6 +31,8 @@ public enum ErrorCodes {
     VENTE_NOT_VALID(13001)
     ;
 
+
+    public static final ErrorCodes BAD_CREDENTIALS = null;
 
     private final int code;
 

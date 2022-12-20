@@ -46,7 +46,7 @@ public class CommandeFournisseurServiceImpl implements CommandeFournisseurServic
 
         if (!errors.isEmpty()){
             log.error("la commande fournisseur n'est pas valide");
-            throw new InvalidEntityException("La commande fournisseur n'est pas valide", ErrorCodes.FOURNISSEUR_NOT_VALID, errors);
+            throw new InvalidEntityException("La commande fournisseur n'est pas valide", ErrorCodes.COMMANDE_FOURNISSEUR_NOT_VALID, errors);
         }
 
         Optional<Fournisseur> fournisseur = fournisseurRepository.findById(dto.getFournisseur().getId());

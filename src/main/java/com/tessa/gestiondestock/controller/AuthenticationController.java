@@ -4,12 +4,12 @@ package com.tessa.gestiondestock.controller;
 import com.tessa.gestiondestock.dto.auth.AuthenticationRequest;
 import com.tessa.gestiondestock.dto.auth.AuthenticationResponse;
 import com.tessa.gestiondestock.services.auth.ApplicationUserDetailsService;
+import com.tessa.gestiondestock.utils.JwtUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.userdetails.UserDetails;
-import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -25,25 +25,31 @@ public class AuthenticationController {
 
     private final ApplicationUserDetailsService userDetailsService;
 
+    private final JwtUtil jwtUtil;
+
 
 
     @Autowired
     public AuthenticationController(AuthenticationManager authenticationManager,
-                                    ApplicationUserDetailsService userDetailsService) {
+                                    ApplicationUserDetailsService userDetailsService,
+                                    JwtUtil jwtUtil) {
         this.authenticationManager = authenticationManager;
         this.userDetailsService = userDetailsService;
+        this.jwtUtil = jwtUtil;
     }
 
     @PostMapping("/authenticate")
     public ResponseEntity<AuthenticationResponse> authenticate(@RequestBody AuthenticationRequest request){
-        authenticationManager.authenticate(
-                new UsernamePasswordAuthenticationToken(
-                        request.getLogin(),
-                        request.getPassword()
-                )
-        );
+    //    authenticationManager.authenticate(
+    //            new UsernamePasswordAuthenticationToken(
+    //                    request.getLogin(),
+    //                    request.getPassword()
+    //            )
+    //    );
         final UserDetails userDetails = userDetailsService.loadUserByUsername(request.getLogin());
 
-        return ResponseEntity.ok(AuthenticationResponse.builder().accessToken("dummy_access_token").build());
+        final String jwt = jwtUtil.generateToken(userDetails);
+
+        return ResponseEntity.ok(AuthenticationResponse.builder().refreshToken(jwt).build());
     }
 }

@@ -11,9 +11,10 @@ import java.time.Instant;
 import java.util.List;
 import java.util.Objects;
 
-@Getter
-@Setter
-@ToString
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
+@EqualsAndHashCode(callSuper = true)
 @Entity
 @Table(name = "ventes")
 public class Ventes extends AbstractEntity{
@@ -31,16 +32,4 @@ public class Ventes extends AbstractEntity{
     @ToString.Exclude
     private List<LigneVente> ligneVentes;
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || Hibernate.getClass(this) != Hibernate.getClass(o)) return false;
-        Ventes ventes = (Ventes) o;
-        return getId() != null && Objects.equals(getId(), ventes.getId());
-    }
-
-    @Override
-    public int hashCode() {
-        return getClass().hashCode();
-    }
 }

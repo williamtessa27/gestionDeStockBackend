@@ -7,9 +7,10 @@ import javax.persistence.*;
 import java.util.List;
 import java.util.Objects;
 
-@Getter
-@Setter
-@ToString
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
+@EqualsAndHashCode(callSuper = true)
 @Entity
 @Table(name = "fournisseur")
 public class Fournisseur extends AbstractEntity{
@@ -36,19 +37,6 @@ public class Fournisseur extends AbstractEntity{
     private String mail;
 
     @OneToMany(mappedBy = "fournisseur")
-    @ToString.Exclude
     private List<CommandeFournisseur> commandeFournisseurs;
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || Hibernate.getClass(this) != Hibernate.getClass(o)) return false;
-        Fournisseur that = (Fournisseur) o;
-        return getId() != null && Objects.equals(getId(), that.getId());
-    }
-
-    @Override
-    public int hashCode() {
-        return getClass().hashCode();
-    }
 }

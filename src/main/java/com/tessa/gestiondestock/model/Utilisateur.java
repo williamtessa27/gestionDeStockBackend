@@ -8,9 +8,10 @@ import java.time.Instant;
 import java.util.List;
 import java.util.Objects;
 
-@Getter
-@Setter
-@ToString
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
+@EqualsAndHashCode(callSuper = true)
 @Entity
 @Table(name = "utilisateur")
 public class Utilisateur extends AbstractEntity{
@@ -44,16 +45,4 @@ public class Utilisateur extends AbstractEntity{
     @ToString.Exclude
     private List<Roles> roles;
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || Hibernate.getClass(this) != Hibernate.getClass(o)) return false;
-        Utilisateur that = (Utilisateur) o;
-        return getId() != null && Objects.equals(getId(), that.getId());
-    }
-
-    @Override
-    public int hashCode() {
-        return getClass().hashCode();
-    }
 }

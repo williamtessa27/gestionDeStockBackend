@@ -87,7 +87,6 @@ public class CategoryServiceImpl implements CategoryService {
         if(id == null){
             log.error("Category ID is null");
         }
-        assert id != null;
         categoryRepository.deleteById(id);
     }
 
