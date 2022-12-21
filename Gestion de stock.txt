@@ -1,0 +1,28 @@
+
+
+  LE RESTE A FAIRE POUR L'API GESTION DE STOCK:
+  
+  COMMANDE CLIENT:
+  
+  .Modifier la quantité x
+  .Modifier le client x
+  .Ajouter un état de commande client:
+         - En cours de preparation
+		 - Commande validée
+		 - Commande livrer
+  .Modifier un article x
+  .Supprimer un article x
+  .Chercher les lignes commandes client par commande x
+
+  COMMANDE FOURNISSEUR:
+
+  .Modifier la quantité x
+  .Modifier le client x
+  .Modifier un article x
+  .Supprimer un article x
+  .Chercher les lignes commandes fournisseurs par commande x
+  .Ajouter un état de commande fournisseur:
+         - En cours de preparation
+		 - Commande validée
+		 - Commande livrer
+  

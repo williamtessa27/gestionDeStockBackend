@@ -2,13 +2,13 @@ package com.tessa.gestiondestock.config;
 
 import com.tessa.gestiondestock.services.auth.ApplicationUserDetailsService;
 import com.tessa.gestiondestock.utils.JwtUtil;
+import org.slf4j.MDC;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.web.authentication.WebAuthenticationDetailsSource;
 import org.springframework.stereotype.Component;
-import org.springframework.util.StringUtils;
 import org.springframework.web.filter.OncePerRequestFilter;
 
 import javax.servlet.FilterChain;
@@ -34,19 +34,21 @@ public class ApplicationRequestFilter extends OncePerRequestFilter {
     protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain chain)
             throws ServletException, IOException {
 
-        final String authHeader = request.getHeader("Authorization");
+        final String authHeader = request.getHeader("authorization");
 
-        String username = null;
+        String userEmail = null;
         String jwt = null;
+        String idEntreprise = null;
 
-        if (StringUtils.hasLength(authHeader) && authHeader.startsWith("Bearer ")){
+        if (authHeader != null && authHeader.startsWith("Bearer ")){
             jwt = authHeader.substring(7);
-            username = jwtUtil.extractUsername(jwt);
+            userEmail = jwtUtil.extractUsername(jwt);
+            idEntreprise = jwtUtil.extractIdEntreprise(jwt);
         }
 
-        if (StringUtils.hasLength(username) && SecurityContextHolder.getContext().getAuthentication() == null){
-            UserDetails userDetails = userDetailsService.loadUserByUsername(username);
-            if (jwtUtil.validateToken(jwt, userDetails)){
+        if (userEmail != null && SecurityContextHolder.getContext().getAuthentication() == null){
+            UserDetails userDetails = this.userDetailsService.loadUserByUsername(userEmail);
+            if (Boolean.TRUE.equals(jwtUtil.validateToken(jwt, userDetails))){
                 UsernamePasswordAuthenticationToken usernamePasswordAuthenticationToken = new UsernamePasswordAuthenticationToken(
                         userDetails, null, userDetails.getAuthorities()
                 );
@@ -56,6 +58,7 @@ public class ApplicationRequestFilter extends OncePerRequestFilter {
                 SecurityContextHolder.getContext().setAuthentication(usernamePasswordAuthenticationToken);
             }
         }
+        MDC.put("idEntreprise", idEntreprise);
         chain.doFilter(request, response);
     }
 }

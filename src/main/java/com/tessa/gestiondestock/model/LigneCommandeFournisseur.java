@@ -4,6 +4,7 @@ import lombok.*;
 import org.hibernate.Hibernate;
 
 import javax.persistence.*;
+import java.math.BigDecimal;
 import java.util.Objects;
 
 
@@ -21,6 +22,12 @@ public class LigneCommandeFournisseur extends AbstractEntity{
     @ManyToOne
     @JoinColumn(name = "idarticle")
     private Article article;
+
+    @Column(name = "quantite")
+    private BigDecimal quantite;
+
+    @Column(name = "prixunitaire")
+    private BigDecimal prixUnitaire;
 
     @ManyToOne
     @JoinColumn(name = "idcommandefournisseur")

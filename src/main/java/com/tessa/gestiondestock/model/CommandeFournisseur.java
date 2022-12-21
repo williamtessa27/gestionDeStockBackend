@@ -22,6 +22,9 @@ public class CommandeFournisseur extends AbstractEntity{
     @Column(name = "identreprise")
     private Integer idEntreprise;
 
+    @Column(name = "etatcommande")
+    private EtatCommande etatCommande;
+
     @Column(name = "datecommande")
     private Instant dateCommande;
 

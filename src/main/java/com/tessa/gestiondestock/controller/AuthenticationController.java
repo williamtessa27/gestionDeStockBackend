@@ -3,6 +3,7 @@ package com.tessa.gestiondestock.controller;
 
 import com.tessa.gestiondestock.dto.auth.AuthenticationRequest;
 import com.tessa.gestiondestock.dto.auth.AuthenticationResponse;
+import com.tessa.gestiondestock.model.auth.ExtendedUser;
 import com.tessa.gestiondestock.services.auth.ApplicationUserDetailsService;
 import com.tessa.gestiondestock.utils.JwtUtil;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,7 +29,6 @@ public class AuthenticationController {
     private final JwtUtil jwtUtil;
 
 
-
     @Autowired
     public AuthenticationController(AuthenticationManager authenticationManager,
                                     ApplicationUserDetailsService userDetailsService,
@@ -40,16 +40,16 @@ public class AuthenticationController {
 
     @PostMapping("/authenticate")
     public ResponseEntity<AuthenticationResponse> authenticate(@RequestBody AuthenticationRequest request){
-    //    authenticationManager.authenticate(
-    //            new UsernamePasswordAuthenticationToken(
-    //                    request.getLogin(),
-    //                    request.getPassword()
-    //            )
-    //    );
+        authenticationManager.authenticate(
+                new UsernamePasswordAuthenticationToken(
+                        request.getLogin(),
+                        request.getPassword()
+                )
+        );
         final UserDetails userDetails = userDetailsService.loadUserByUsername(request.getLogin());
 
-        final String jwt = jwtUtil.generateToken(userDetails);
+        final String jwt = jwtUtil.generateToken((ExtendedUser) userDetails);
 
-        return ResponseEntity.ok(AuthenticationResponse.builder().refreshToken(jwt).build());
+        return ResponseEntity.ok(AuthenticationResponse.builder().accessToken(jwt).build());
     }
 }

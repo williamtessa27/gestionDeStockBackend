@@ -42,7 +42,6 @@ public class Utilisateur extends AbstractEntity{
     private Entreprise entreprise;
 
     @OneToMany(mappedBy = "utilisateur")
-    @ToString.Exclude
     private List<Roles> roles;
 
 }

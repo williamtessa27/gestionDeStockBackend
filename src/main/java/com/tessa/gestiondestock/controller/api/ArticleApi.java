@@ -1,6 +1,9 @@
 package com.tessa.gestiondestock.controller.api;
 
 import com.tessa.gestiondestock.dto.ArticleDto;
+import com.tessa.gestiondestock.dto.LigneCommandeClientDto;
+import com.tessa.gestiondestock.dto.LigneCommandeFournisseurDto;
+import com.tessa.gestiondestock.dto.LigneVenteDto;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiResponse;
@@ -48,6 +51,18 @@ public interface ArticleApi {
             @ApiResponse(code = 200, message = "La liste des articles / Une liste vide")
     })
     List<ArticleDto> findAll();
+
+    @GetMapping(value = APP_ROOT + "/articles/historique/vente/{idArticle}", produces = MediaType.APPLICATION_JSON_VALUE)
+    List<LigneVenteDto> findHistoriqueVentes(@PathVariable("idArticle") Integer idArticle);
+
+    @GetMapping(value = APP_ROOT + "/articles/historique/commandeClient/{idArticle}", produces = MediaType.APPLICATION_JSON_VALUE)
+    List<LigneCommandeClientDto> findHistoriqueCommandeClient(@PathVariable("idArticle") Integer idArticle);
+
+    @GetMapping(value = APP_ROOT + "/articles/historique/commandeFournisseur/{idArticle}", produces = MediaType.APPLICATION_JSON_VALUE)
+    List<LigneCommandeFournisseurDto> findHistoriqueCommandeFournisseur(@PathVariable("idArticle") Integer idArticle);
+
+    @GetMapping(value = APP_ROOT + "/articles/filter/category/{idCategory}", produces = MediaType.APPLICATION_JSON_VALUE)
+    List<ArticleDto> findAllArticleByIdCategory(@PathVariable("idCategory") Integer idCategory);
 
 
     @DeleteMapping(value = APP_ROOT + "/articles/delete/{idArticle}")

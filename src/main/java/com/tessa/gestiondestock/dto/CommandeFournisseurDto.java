@@ -3,6 +3,7 @@ package com.tessa.gestiondestock.dto;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.tessa.gestiondestock.model.CommandeFournisseur;
+import com.tessa.gestiondestock.model.EtatCommande;
 import lombok.Builder;
 import lombok.Data;
 
@@ -19,6 +20,8 @@ public class CommandeFournisseurDto {
 
     private String code;
 
+    private EtatCommande etatCommande;
+
     private Instant dateCommande;
 
     private FournisseurDto fournisseur;
@@ -34,6 +37,7 @@ public class CommandeFournisseurDto {
         return CommandeFournisseurDto.builder()
                 .id(commandeFournisseur.getId())
                 .idEntreprise(commandeFournisseur.getIdEntreprise())
+                .etatCommande(commandeFournisseur.getEtatCommande())
                 .code(commandeFournisseur.getCode())
                 .dateCommande(commandeFournisseur.getDateCommande())
                 .fournisseur(FournisseurDto.fromEntity(commandeFournisseur.getFournisseur()))
@@ -48,10 +52,15 @@ public class CommandeFournisseurDto {
         CommandeFournisseur commandeFournisseur = new CommandeFournisseur();
         commandeFournisseur.setId(commandeFournisseurDto.getId());
         commandeFournisseur.setIdEntreprise(commandeFournisseurDto.getIdEntreprise());
+        commandeFournisseur.setEtatCommande(commandeFournisseurDto.getEtatCommande());
         commandeFournisseur.setCode(commandeFournisseurDto.getCode());
         commandeFournisseur.setDateCommande(commandeFournisseurDto.getDateCommande());
         commandeFournisseur.setFournisseur(FournisseurDto.toEntity(commandeFournisseurDto.getFournisseur()));
 
         return commandeFournisseur;
+    }
+
+    public boolean isCommandeLivree(){
+        return EtatCommande.LIVREE.equals(this.etatCommande);
     }
 }

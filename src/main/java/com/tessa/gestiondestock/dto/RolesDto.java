@@ -11,8 +11,6 @@ public class RolesDto {
 
     private Integer id;
 
-    private Integer idEntreprise;
-
     private String roleName;
 
     private UtilisateurDto utilisateur;
@@ -25,7 +23,6 @@ public class RolesDto {
 
         return RolesDto.builder()
                 .id(roles.getId())
-                .idEntreprise(roles.getIdEntreprise())
                 .roleName(roles.getRoleName())
                 .build();
     }
@@ -39,7 +36,6 @@ public class RolesDto {
 
         Roles roles = new Roles();
         roles.setId(rolesDto.getId());
-        roles.setIdEntreprise(rolesDto.getIdEntreprise());
         roles.setRoleName(rolesDto.getRoleName());
 
         return roles;
